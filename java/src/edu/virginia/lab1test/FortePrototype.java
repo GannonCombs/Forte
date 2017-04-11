@@ -87,17 +87,18 @@ public class FortePrototype extends Game {
 
 
         //  ArrayList<Integer> CxArray = Arrays.asList(500,2000,4000);
-        int[] CxArray = { 1000,2000,4000};
-        int[] CyArray = { 500,500,500};
-
-        int[] DxArray = { 600,2100,4100};
-        int[] DyArray = { 500,500,500};
-
-        int[] ExArray = { 700,2200,4200};
-        int[] EyArray = { 500,500,500};
-
-        int[] FxArray = { 800,2300,4300};
-        int[] FyArray = { 500,500,500};
+ 
+        int[] CxArray = { 1500,1980};
+        int[] CyArray = { gameHeight-175,410};
+        
+        int[] DxArray = { 1600,2100};
+        int[] DyArray = { gameHeight - 175,gameHeight - 175};
+        
+        int[] ExArray = { 1700,2200};
+        int[] EyArray = { gameHeight - 175,gameHeight - 175};
+        
+        int[] FxArray = { 1800,2300};
+        int[] FyArray = { gameHeight - 175,gameHeight - 175};
 
         C.setxArray(CxArray);
         C.setyArray(CyArray);
@@ -126,6 +127,7 @@ public class FortePrototype extends Game {
          */
         setHorizontalPlatform(500,gameHeight-300,3);
         setHorizontalPlatform(2000,gameHeight-500,4);
+        setHorizontalPlatform(3000,gameHeight-400,7);
         setVerticalPlatform(1000,3);
         setVerticalPlatform(1500,2);
         setDiagonalPlatform(2500,3, 1);
@@ -215,6 +217,8 @@ public class FortePrototype extends Game {
         //  }
         if (mainClock.getElapsedTime() % 2000 > start && (mainClock.getElapsedTime() % 2000) < start + 500){
             temp.setImage("Flash.png");
+            temp.setStart(start);
+            temp.setFinish(finish);
             //bol = false;
         }
 
@@ -318,10 +322,10 @@ public class FortePrototype extends Game {
             }
         }
 
-        timing(2000,3000,C);
-        timing(4000,5000,D);
-        timing(6000,7000,E);
-        timing(8000,9000,F);
+        timingMode(0,1000,C);
+        timingMode(0,1000,D);
+        timingMode(0,1000,E);
+        timingMode(0,1000,F);
 
 
         ArrayList<Sprite> toRemove = new ArrayList<Sprite>();
