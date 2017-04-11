@@ -4,6 +4,8 @@ package edu.virginia.lab1test;
  * Created by ouchouyang on 2017/03/30.
  */
 
+//Test comment
+
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
