@@ -10,18 +10,22 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class MusicPlayer {
 	
+	File file;
+	Clip clip;
+	float volume;
+	FloatControl gainControl;
+	
 	public MusicPlayer() {	}
 	
 	public void playSong(String filename, float volume) {
-		File file = new File("resources" + File.separator + filename);
-		
+		file = new File("java" + File.separator + "resources" + File.separator + filename);
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(file);
-			Clip clip = AudioSystem.getClip();
+			clip = AudioSystem.getClip();
             clip.open(audio);
-            FloatControl gainControl = 
-    			    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-    			gainControl.setValue(volume);
+            this.volume = volume;
+            gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+    		gainControl.setValue(volume);
             clip.start();
         }
         catch(UnsupportedAudioFileException uae) {
@@ -34,4 +38,24 @@ public class MusicPlayer {
             System.out.println(lua);
         }
 	}
+	
+	public void mute() {
+		if (clip != null) {
+			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(gainControl.getMinimum());
+		}
+	}
+
+	public void unmute() {
+		if (clip != null) {
+			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(volume);
+		}
+	}
+	
+	public float getVolume() {
+		return volume;
+	}
+	
+	
 }
