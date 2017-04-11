@@ -14,12 +14,13 @@ import java.awt.event.KeyEvent;
 
 /**
  * A very basic display object for a java based gaming engine
- * 
+ *
  * */
 public class DisplayObject extends EventDispatcher {
 
 	/* All DisplayObject have a unique id */
 	private String id;
+
 
 	/* The image that is displayed by this object */
 	private BufferedImage displayImage;
@@ -80,7 +81,7 @@ public class DisplayObject extends EventDispatcher {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
+
 	public void setPosition(int x, int y) {
 		Position p = new Position(x, y);
 		this.position = p;
@@ -91,15 +92,15 @@ public class DisplayObject extends EventDispatcher {
 		int b = position.getY() + y;
 		setPosition(a, b);
 	}
-	
+
 	public Position getPivotPoint() {
 		return pivotPoint;
 	}
-	
+
 	public void setPivotPoint(Position pivotPoint) {
 		this.pivotPoint = pivotPoint;
 	}
-	
+
 	public void setPivotPoint(int x, int y) {
 		Position p = new Position(x, y);
 		this.pivotPoint = p;
@@ -128,7 +129,7 @@ public class DisplayObject extends EventDispatcher {
 	public void setScaleXY(double scale) {
 		this.scaleX = this.scaleY = scale;
 	}
-	
+
 	public void setScaleX(double scaleX) {
 		this.scaleX = scaleX;
 	}
@@ -160,15 +161,15 @@ public class DisplayObject extends EventDispatcher {
 	public DisplayObject getParent() {
 		return this.parent;
 	}
-	
+
 	public void setParent(DisplayObject d) {
 		this.parent = d;
 	}
-	
+
 	public ArrayList<DisplayObject> getChildren() {
 		return children;
 	}
-	
+
 	/**
 	 * Returns the unscaled width and height of this display object
 	 * */
@@ -186,17 +187,17 @@ public class DisplayObject extends EventDispatcher {
 		if(displayImage == null) return 0;
 		return (int) (displayImage.getWidth() * scaleX);
 	}
-	
+
 	public int getScaledHeight() {
 		if(displayImage == null) return 0;
 		return (int) (displayImage.getHeight() * scaleY);
-	}	
-	
+	}
+
 	public BufferedImage getDisplayImage() {
 		return this.displayImage;
 	}
 
-	protected void setImage(String imageName) {
+	public void setImage(String imageName) {
 		if (imageName == null) {
 			return;
 		}
@@ -240,7 +241,7 @@ public class DisplayObject extends EventDispatcher {
 		d.setParent(this);
 		d.setPivotPoint(this.pivotPoint);
 	}
-	
+
 	public void addChildAt(int i, DisplayObject d) {
 		if ((i > 0) && (i < children.size())) {
 			children.add(d);
@@ -248,34 +249,34 @@ public class DisplayObject extends EventDispatcher {
 			d.setPivotPoint(this.pivotPoint);
 		}
 	}
-	
+
 	public void removeChild(DisplayObject d) {
 		children.remove(d);
 	}
-	
+
 	public void removeChildAt(int i, DisplayObject d) {
 		if ((i > 0) && (i < children.size())) {
 			children.remove(i);
-		}	
+		}
 	}
-	
+
 	public void removeAll() {
 		children.clear();
 	}
-	
+
 	public boolean contains(DisplayObject d) {
 		return children.indexOf(d) != -1;
 	}
-	
+
 	public int getPosX() {
 		return position.getX();
 	}
-	
+
 	public int getPosY() {
 		return position.getY();
 	}
-	
-	/** 
+
+	/**
 	 * Returns an array containing vertices of the hitbox
 	 * Hitbox array visualized (0 = top-left, 1 = top-right, etc.):
 	 * [0]--[1]
@@ -290,7 +291,7 @@ public class DisplayObject extends EventDispatcher {
 		hitbox[3] = new Position( hitbox[1].getX(), hitbox[2].getY() );
 		return hitbox;
 	}
-	/** 
+	/**
 	 * Return true is there is a collision
 	 * */
 	public boolean collidesWith(DisplayObject d) {
@@ -301,7 +302,7 @@ public class DisplayObject extends EventDispatcher {
 		if (h1[0].getY() > h2[2].getY() || h1[2].getY() < h2[0].getY()) return false;
 		return true;
 	}
-	
+
 	/**
 	 * More specific version of collidesWith method
 	 * @param x - horizontal offset (positive = moving right)
@@ -314,8 +315,8 @@ public class DisplayObject extends EventDispatcher {
 		if (h1[0].getX() + x > h2[1].getX() || h1[1].getX() + x < h2[0].getX()) return false;
 		if (h1[0].getY() + y > h2[2].getY() || h1[2].getY() + y < h2[0].getY()) return false;
 		return true;
-	}	
-	
+	}
+
 	public boolean nearby(DisplayObject d) {
 		if (Math.abs(d.getPosX() - this.getPosX()) < this.getScaledWidth() + d.getScaledWidth()) {
 			if (Math.abs(d.getPosY() - this.getPosY()) < this.getScaledHeight() + d.getScaledHeight())
@@ -323,36 +324,36 @@ public class DisplayObject extends EventDispatcher {
 		}
 		return false;
 	}
-	
+
 	public BufferedImage getSprite(int xGrid, int yGrid) {
 
-        if (displayImage == null) {
-        	this.setImage("Spritesheet.png");
-        }
+		if (displayImage == null) {
+			this.setImage("Spritesheet.png");
+		}
 
-        return displayImage.getSubimage(xGrid * tile_width, yGrid * tile_height, tile_width, tile_height);
-    }
-	
+		return displayImage.getSubimage(xGrid * tile_width, yGrid * tile_height, tile_width, tile_height);
+	}
+
 	/**
 	 * Invoked on every frame before drawing. Used to update this display
 	 * objects state before the draw occurs. Should be overridden if necessary
 	 * to update objects appropriately.
 	 * */
 	protected void update(ArrayList<String> pressedKeys) {
-		
+
 	}
 
 	public void keyPressed(KeyEvent e) {
 
 	}
-	
+
 	/**
 	 * Draws this image. This should be overloaded if a display object should
 	 * draw to the screen differently. This method is automatically invoked on
 	 * every frame.
 	 * */
 	public void draw(Graphics g) {
-		
+
 		if (displayImage != null) {
 			
 			/*
@@ -368,7 +369,7 @@ public class DisplayObject extends EventDispatcher {
 						(int) (getUnscaledWidth() * scaleX),
 						(int) (getUnscaledHeight() * scaleY), null);
 			}
-			
+
 			for (DisplayObject child : children) {
 				child.draw(g);
 			}

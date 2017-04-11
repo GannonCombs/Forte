@@ -19,6 +19,7 @@ public class Music implements JMC{
     Score score;
     int[] pitchArray;
     double[] rhythmArray;
+    Note r, n, n2;
 
     public static void main(String[] args){
 
@@ -47,8 +48,15 @@ public class Music implements JMC{
         //phrase2 = new Phrase(0.0);
         //phrase3 = new Phrase(0.0);
         //Create the data objects we want to use
-        score = new Score("D4_quarter_bowed_glass", 120);
+        score = new Score("C song", 60);
         //Lets write the music in a convenient way.
+        //Phrase phr2 = new Phrase(0.0);
+        r = new Note(REST, QUARTER_NOTE);
+        //phr2.addNote(r);
+        n = new Note(C4, QUARTER_NOTE);
+        n2 = new Note(G5, QUARTER_NOTE);
+        //phr2.addNote(n2);
+        //Note r2 = new Note(REST, QUARTER_NOTE);
         pitchArray = new int[] {D4};
         rhythmArray = new double[] {QN};
     }
@@ -68,13 +76,17 @@ public class Music implements JMC{
 
     public void makeMusicData() {
         //add the notes to a phrase
-        phrase1.addNoteList(pitchArray, rhythmArray);
+        phrase1.addNote(n);
+        phrase1.addNote(r);
+        phrase1.addNote(n2);
+        phrase1.addNote(r);
+        //phrase1.addNoteList(pitchArray, rhythmArray);
         Mod.transpose(phrase1, 12);
     }
 
     private void playAndSave() {
         //Now we do a SMF write
-        Write.midi(score, "D4_quarter_bowed_glass.wav");
+        Write.midi(score, "C_song.wav");
         //Now play it back
 
         Play.midi(score);
