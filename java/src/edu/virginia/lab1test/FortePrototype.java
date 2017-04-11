@@ -215,14 +215,14 @@ public class FortePrototype extends Game {
         //  if (bol) {
         //      image = temp.getDisplayImage();
         //  }
-        if (mainClock.getElapsedTime() % 2000 > start && (mainClock.getElapsedTime() % 2000) < start + 500){
+        if (mainClock.getElapsedTime() % 500 > start && (mainClock.getElapsedTime() % 500) < start + 100){
             temp.setImage("Flash.png");
             temp.setStart(start);
             temp.setFinish(finish);
             //bol = false;
         }
 
-        if (mainClock.getElapsedTime() % 2000 > finish && (mainClock.getElapsedTime() % 2000) <finish + 500){
+        if (mainClock.getElapsedTime() % 500 > finish && (mainClock.getElapsedTime() % 500) <finish + 100){
             temp.setImage(temp.getPrev());
         }
 
@@ -322,10 +322,10 @@ public class FortePrototype extends Game {
             }
         }
 
-        timingMode(0,1000,C);
-        timingMode(0,1000,D);
-        timingMode(0,1000,E);
-        timingMode(0,1000,F);
+        timingMode(0,100,C);
+        timingMode(0,100,D);
+        timingMode(0,100,E);
+        timingMode(0,100,F);
 
 
         ArrayList<Sprite> toRemove = new ArrayList<Sprite>();
@@ -338,7 +338,7 @@ public class FortePrototype extends Game {
                     if (e.collidesWith(p, e.getVelX(), e.getVelY())) {
                         toRemove.add(p);
                         falling = true;
-                        player.setPosition(p.getPosition());
+                       // player.setPosition(p.getPosition());
                         //p.setVisible(false);
                         // particle.remove(p);
                         if (e.getId() == "C") {
@@ -515,20 +515,21 @@ public class FortePrototype extends Game {
         //  mainClock.resetGameClock();
         double songLength = 11573;
         // bgm.playSong("game_bgm.wav", -10);
-        C.playSong("piano_C5.wav", -10);
-        G.playSong("piano_G4.wav", -10);
-        A.playSong("piano_A4.wav", -10);
-        D.playSong("piano_D4.wav", -10);
+        C.playSong("piano_c5.wav", -10);
+        G.playSong("piano_g4.wav", -10);
+        A.playSong("piano_a4.wav", -10);
+        D.playSong("piano_d4.wav", -10);
         while (true) {
             if (clock.getElapsedTime() > songLength) {
                 clock.resetGameClock();
                 //  bgm.playSong("game_bgm.wav", -10);
             }
             if(clock2.getElapsedTime() > 2000){
-                C.playSong("piano_C5.wav", -10);
-                G.playSong("piano_G4.wav", -10);
-                A.playSong("piano_A4.wav", -10);
-                D.playSong("piano_D4.wav", -10);
+                C.playSong("piano_c5.wav", -10);
+                G.playSong("piano_g4.wav", -10);
+                A.playSong("piano_a4.wav", -10);
+                D.playSong("piano_d4.wav", -10);
+                clock2.resetGameClock();
             }
         }
 

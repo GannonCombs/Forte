@@ -74,7 +74,7 @@ public class QuestManager implements IEventListener {
 				//musicPlayer.playSong("Am6.wav",-20);
 				if (clock.getElapsedTime() % 2000 > D.getStart() && clock.getElapsedTime() % 2000 <D.getFinish()) {
 
-					musicPlayer.playSong("D.wav", -20);
+					musicPlayer.playSong("piano_g4.wav", -20);
 				}
 				nextPosition(D);
 
@@ -85,7 +85,7 @@ public class QuestManager implements IEventListener {
 				E.setVisible(false);
 				//  musicPlayer.playSong("Chord_four.wav",-20);
 				if (clock.getElapsedTime() % 2000 > E.getStart() && clock.getElapsedTime() % 2000 <E.getFinish()) {
-					musicPlayer.playSong("E.wav", -20);
+					musicPlayer.playSong("piano_a4.wav", -20);
 				}
 				nextPosition(E);
 
@@ -96,7 +96,7 @@ public class QuestManager implements IEventListener {
 				F.setVisible(false);
 				// musicPlayer.playSong("Ab9.wav",-20);
 				if (clock.getElapsedTime() % 2000 > F.getStart() && clock.getElapsedTime() % 2000 <F.getFinish()) {
-					musicPlayer.playSong("F.wav", -20);
+					musicPlayer.playSong("piano_d4.wav", -20);
 				}
 				nextPosition(F);
 

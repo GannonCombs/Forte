@@ -16,9 +16,9 @@ public class MusicPlayer {
 	FloatControl gainControl;
 	
 	public MusicPlayer() {	}
-	
+	//"java" + File.separator +
 	public void playSong(String filename, float volume) {
-		file = new File("java" + File.separator + "resources" + File.separator + filename);
+		file = new File( "resources" + File.separator + filename);
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(file);
 			clip = AudioSystem.getClip();
