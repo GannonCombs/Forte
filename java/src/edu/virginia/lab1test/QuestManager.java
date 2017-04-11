@@ -62,7 +62,7 @@ public class QuestManager implements IEventListener {
 		if (source == C) {
 			if (C.isVisible()) {
 				C.setVisible(false);
-				if (clock.getElapsedTime() > C.getStart() && clock.getElapsedTime() <C.getFinish()) {
+				if (clock.getElapsedTime() % 2000 > C.getStart() && clock.getElapsedTime() % 2000 <C.getFinish()) {
 					musicPlayer.playSong("piano_c5.wav", -20);
 				}
 				nextPosition(C);
@@ -72,7 +72,7 @@ public class QuestManager implements IEventListener {
 			if (D.isVisible()) {
 				D.setVisible(false);
 				//musicPlayer.playSong("Am6.wav",-20);
-				if (clock.getElapsedTime() > D.getStart() && clock.getElapsedTime() <D.getFinish()) {
+				if (clock.getElapsedTime() % 2000 > D.getStart() && clock.getElapsedTime() % 2000 <D.getFinish()) {
 
 					musicPlayer.playSong("D.wav", -20);
 				}
@@ -84,7 +84,7 @@ public class QuestManager implements IEventListener {
 			if (E.isVisible()) {
 				E.setVisible(false);
 				//  musicPlayer.playSong("Chord_four.wav",-20);
-				if (clock.getElapsedTime() > E.getStart() && clock.getElapsedTime() <E.getFinish()) {
+				if (clock.getElapsedTime() % 2000 > E.getStart() && clock.getElapsedTime() % 2000 <E.getFinish()) {
 					musicPlayer.playSong("E.wav", -20);
 				}
 				nextPosition(E);
@@ -95,7 +95,7 @@ public class QuestManager implements IEventListener {
 			if (F.isVisible()) {
 				F.setVisible(false);
 				// musicPlayer.playSong("Ab9.wav",-20);
-				if (clock.getElapsedTime() > F.getStart() && clock.getElapsedTime() <F.getFinish()) {
+				if (clock.getElapsedTime() % 2000 > F.getStart() && clock.getElapsedTime() % 2000 <F.getFinish()) {
 					musicPlayer.playSong("F.wav", -20);
 				}
 				nextPosition(F);
