@@ -525,6 +525,7 @@ public class FortePrototype extends Game {
                 //  bgm.playSong("game_bgm.wav", -10);
             }
             if(clock2.getElapsedTime() > 2000){
+                clock2.resetGameClock();
                 C.playSong("piano_C5.wav", -10);
                 G.playSong("piano_G4.wav", -10);
                 A.playSong("piano_A4.wav", -10);
