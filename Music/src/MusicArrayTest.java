@@ -64,7 +64,7 @@ public class MusicArrayTest implements JMC{
 
     private void playAndSave() {
         //Now we do a SMF write
-        Write.midi(score, "Rowboat.mid");
+        //Write.midi(score, "Rowboat.mid");
 
         long startTime = System.currentTimeMillis();
         long elapsedTime = 0L;
