@@ -19,7 +19,18 @@ public class Sprite extends DisplayObject {
 
 	public Sprite(String id, String imageFileName) {
 		super(id, imageFileName);
+		this.imageName = imageFileName;
 	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	private String imageName;
 	private int start = 0;
 	private int finish = 0;
 	private BufferedImage prev;

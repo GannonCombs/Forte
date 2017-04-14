@@ -26,10 +26,10 @@ public class QuestManager implements IEventListener {
 	private Sprite D;
 	private Sprite E;
 	private Sprite F;
-	private boolean Cmute;
-	private boolean Dmute;
-	private boolean Emute;
-	private boolean Fmute;
+	private boolean Cismute = true;
+	private boolean Dismute = true;
+	private boolean Eismute = true;
+	private boolean Fismute=true;
 	private GameClock clock;
 	private MusicPlayer musicPlayer;
 	private ArrayList<Sprite> list = new ArrayList<Sprite>();
@@ -47,6 +47,21 @@ public class QuestManager implements IEventListener {
 	}
 
 
+	public boolean isCismute() {
+		return Cismute;
+	}
+
+	public boolean isDismute() {
+		return Dismute;
+	}
+
+	public boolean isEismute() {
+		return Eismute;
+	}
+
+	public boolean isFismute() {
+		return Fismute;
+	}
 
 	public void nextPosition(Sprite temp){
 		if (temp.getCurrentIndex() < temp.getxArray().length){
@@ -63,7 +78,12 @@ public class QuestManager implements IEventListener {
 			if (C.isVisible()) {
 				C.setVisible(false);
 				if (clock.getElapsedTime() % 2000 > C.getStart() && clock.getElapsedTime() % 2000 <C.getFinish()) {
-					musicPlayer.playSong("piano_c5.wav", -20);
+					//musicPlayer.playSong("piano_c5.wav", -20);
+					Cismute = false;
+				}
+				else {
+					musicPlayer.playSong("Error.wav",-20);
+
 				}
 				nextPosition(C);
 			}
@@ -74,7 +94,12 @@ public class QuestManager implements IEventListener {
 				//musicPlayer.playSong("Am6.wav",-20);
 				if (clock.getElapsedTime() % 2000 > D.getStart() && clock.getElapsedTime() % 2000 <D.getFinish()) {
 
-					musicPlayer.playSong("piano_g4.wav", -20);
+				//	musicPlayer.playSong("piano_g4.wav", -20);
+					Dismute = false;
+				}
+				else {
+					musicPlayer.playSong("Error.wav",-20);
+
 				}
 				nextPosition(D);
 
@@ -85,7 +110,11 @@ public class QuestManager implements IEventListener {
 				E.setVisible(false);
 				//  musicPlayer.playSong("Chord_four.wav",-20);
 				if (clock.getElapsedTime() % 2000 > E.getStart() && clock.getElapsedTime() % 2000 <E.getFinish()) {
-					musicPlayer.playSong("piano_a4.wav", -20);
+					//musicPlayer.playSong("piano_a4.wav", -20);
+					Eismute = false;
+				}
+				else {
+					musicPlayer.playSong("Error.wav",-20);
 				}
 				nextPosition(E);
 
@@ -96,7 +125,12 @@ public class QuestManager implements IEventListener {
 				F.setVisible(false);
 				// musicPlayer.playSong("Ab9.wav",-20);
 				if (clock.getElapsedTime() % 2000 > F.getStart() && clock.getElapsedTime() % 2000 <F.getFinish()) {
-					musicPlayer.playSong("piano_d4.wav", -20);
+					//musicPlayer.playSong("piano_d4.wav", -20);
+					Fismute = false;
+				}
+				else {
+					musicPlayer.playSong("Error.wav",-20);
+
 				}
 				nextPosition(F);
 
